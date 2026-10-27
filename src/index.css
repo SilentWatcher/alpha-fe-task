@@ -1,0 +1,185 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+
+  --color-canvas: #f6f6f3;
+  --color-sidebar: #fafaf7;
+  --color-line: #e7e7e1;
+  --color-line-strong: #d8d8d0;
+  --color-ink: #1b1b1f;
+  --color-ink-soft: #55555d;
+  --color-muted: #5f5f68;
+  --color-faint: #6b6b73;
+  --color-accent: #5657c7;
+  --color-accent-soft: #eeeefb;
+  --color-accent-ink: #3f40a6;
+
+  --shadow-card: 0 0.0625rem 0.125rem rgba(24, 24, 27, 0.035);
+  --shadow-pop:
+    0 0.75rem 2rem -0.75rem rgba(24, 24, 27, 0.18),
+    0 0.125rem 0.375rem rgba(24, 24, 27, 0.05);
+  --shadow-drawer: -1.5rem 0 4rem -2.25rem rgba(24, 24, 27, 0.32);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings:
+      'cv02' 1,
+      'cv03' 1,
+      'cv04' 1,
+      'cv11' 1;
+    color-scheme: light;
+  }
+
+  ::selection {
+    background: #dedefa;
+    color: #26264f;
+  }
+
+  :focus-visible {
+    outline: 0.125rem solid rgba(86, 87, 199, 0.62);
+    outline-offset: 0.125rem;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d5d5cd transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #d5d5cd;
+    border: 0.1875rem solid transparent;
+    background-clip: padding-box;
+    border-radius: 0.625rem;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #c2c2b9;
+    border: 0.1875rem solid transparent;
+    background-clip: padding-box;
+  }
+
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-decoration {
+    appearance: none;
+  }
+
+  .contacts-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+}
+
+@keyframes drawer-in {
+  from {
+    transform: translateX(1.125rem);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.375rem) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes unsaved-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.1875rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-drawer-in {
+  animation: drawer-in 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-fade-in {
+  animation: fade-in 160ms ease-out;
+}
+
+@utility animate-pop-in {
+  animation: pop-in 120ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-modal-in {
+  animation: modal-in 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-toast-in {
+  animation: toast-in 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility animate-unsaved-in {
+  animation: unsaved-in 140ms ease-out;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
